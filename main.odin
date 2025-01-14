@@ -44,7 +44,7 @@ main :: proc() {
 	for token in tokens do fmt.println(token)
 
 	node_tree, _ := json.parse_tokens(tokens[:])
-	defer json.delete_node_recursive(node_tree)
+	defer json.destroy_node_recursive(node_tree)
 
 	fmt.println(node_tree)
 }

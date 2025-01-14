@@ -122,12 +122,12 @@ parse_array :: proc(tokens: []Token, iterator: ^int) -> (ArrayNode, bool) {
 /*
 Deletes a node recursively, traversing all child nodes and cleans up memory.
 */
-delete_node_recursive :: proc(node: Node) {
+destroy_node_recursive :: proc(node: Node) {
 	if object_node, is_object := node.(ObjectNode); is_object {
-		for key, value in object_node.value do delete_node_recursive(value)
+		for key, value in object_node.value do destroy_node_recursive(value)
 		delete(object_node.value)
 	} else if array_node, is_array := node.(ArrayNode); is_array {
-		for x in array_node.value do delete_node_recursive(x)
+		for x in array_node.value do destroy_node_recursive(x)
 		delete(array_node.value)
 	}
 }
