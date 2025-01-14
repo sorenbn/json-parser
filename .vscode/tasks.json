@@ -9,7 +9,7 @@
             "command": "cmd",
             "args": [
                 "/C",
-                "if not exist .\\build\\debug mkdir .\\build\\debug"
+                "if not exist .\\build\\debug mkdir .\\build\\debug && xcopy /E /I assets .\\build\\debug\\assets"
             ]
         },
         {
@@ -18,7 +18,7 @@
             "command": "cmd",
             "args": [
                 "/C",
-                "if not exist .\\build\\release mkdir .\\build\\release"
+                "if not exist .\\build\\release mkdir .\\build\\release && xcopy /E /I assets .\\build\\release\\assets"
             ]
         },
         {
