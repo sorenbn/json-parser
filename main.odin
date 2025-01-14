@@ -32,7 +32,10 @@ main :: proc() {
 	}
 
 	json_string, success := read_file_as_string("assets/file.json")
-	if !success do fmt.println("Error reading file.")
+	if !success {
+		fmt.println("Error reading file.")
+		return
+	}
 	defer delete(json_string)
 
 	tokens := json.tokenize(&json_string)
