@@ -1,0 +1,70 @@
+{
+    "version": "2.0.0",
+    "command": "",
+    "args": [],
+    "tasks": [
+        {
+            "label": "mkdir-debug",
+            "type": "shell",
+            "command": "cmd",
+            "args": [
+                "/C",
+                "if not exist .\\build\\debug mkdir .\\build\\debug"
+            ]
+        },
+        {
+            "label": "mkdir-release",
+            "type": "shell",
+            "command": "cmd",
+            "args": [
+                "/C",
+                "if not exist .\\build\\release mkdir .\\build\\release"
+            ]
+        },
+        {
+            "label": "build-debug",
+            "type": "shell",
+            "command": "odin build . -debug -out:build/debug/jsonparser-debug.exe -show-timings",
+            "group": "build"
+        },
+        {
+            "label": "Build Debug",
+            "dependsOn": [
+                "mkdir-debug",
+                "build-debug"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            }
+        },
+        {
+            "label": "build-release",
+            "type": "shell",
+            "command": "odin build . -out:build/release/jsonparser-release.exe -show-timings",
+            "group": "build"
+        },
+        {
+            "label": "Build Release",
+            "dependsOn": [
+                "mkdir-release",
+                "build-release"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Attach RAD Debugger",
+            "type": "shell",
+            "command": "raddbg",
+            "args": [
+                "--build/debug/jsonparser-debug.exe",
+                "--auto_run"
+            ],
+            "problemMatcher": [],
+            "dependsOn": "build-debug"
+        }
+    ]
+}

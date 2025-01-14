@@ -1,0 +1,18 @@
+{
+  "id": "647ceaf3657eade56f8224eb",
+  "index": 0,
+  "person": {
+    "name": "Oz",
+    "address": "Somewhere magical"
+  },
+  "livingAtHome": true,
+  "pet": null,
+  "socks": [
+    {
+      "color": "red"
+    },
+    {
+      "color": "blue"
+    }
+  ]
+}
